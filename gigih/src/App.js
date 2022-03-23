@@ -79,7 +79,7 @@ const song = {
   uri: "spotify:track:3z8h0TU7ReDPLIbEnYhWZb"
 };
 const songsWrapper = document.getElementById("songs-wrapper");
-const thumbnailUrl = song.album.images
+const thumbnailUrl = "https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b";
 
 
 const songItem = document.createElement("div");
@@ -101,7 +101,7 @@ songTitle.setAttribute("class", "song-title");
 button.setAttribute("class", "btn-small btn-primary");
 
 songTitle.innerHTML = song.name;
-artist.innerHTML = song.album.artists.name;
+artist.innerHTML = song.album.artists[0].name;
 album.innerHTML = song.album.name;
 separator.innerHTML = " - ";
 button.innerHTML = "Select";

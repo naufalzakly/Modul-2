@@ -89,9 +89,7 @@ const dataImage = song.album.images[0];
                 artis={dataArtis.name}
                 date={firstData.album.release_date}
                 populer = {firstData.popularity}
-                
             />
-
         </div>
       </div>
     );

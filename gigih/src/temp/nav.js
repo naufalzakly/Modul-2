@@ -1,7 +1,8 @@
-import { useSearchResult } from "../component/search";
+// import { useSearchResult } from "../component/search";
 import axios from "axios";
 import { useEffect, useState } from 'react'
-import Container from "../component/container";
+import MusicComponent from "../component";
+
 
 const Nav = () => {
 
@@ -13,7 +14,8 @@ const Nav = () => {
     const SCOPE = 'playlist-modify-private'
     const [token,setToken] = useState(null);
     const [query,setQuery] = useState('');
-    const { result, setResult } = useSearchResult()
+    const [result,setResult] = useState([])
+
 
     const handleAuthorizeUser = () => {
         window.location.replace(`${AUTHORIZE_URL}?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}`)
@@ -26,7 +28,7 @@ const Nav = () => {
     }
 
     const handleSearch = async () => {
-    const response = await axios.get(`${BASE_URL}search`,{
+        const response = await axios.get(`${BASE_URL}search`,{
             params: {
                 q: query,
                 type: 'track'
@@ -44,40 +46,48 @@ const Nav = () => {
         if (window.location.hash) parseToken(window.location.hash)
     },[])
 
-
+    
     return(
         <section className="bg-gray-800 py-4">
-            <Container>
-                <div className="flex items-center justify-between px-2">
-                    <a href="/" className="text-white font-bold text-xl">
-                        Spotify Clone
-                    </a>
-                    {
-                        !token &&
-                        <button
-                            onClick={handleAuthorizeUser}
-                            className="text-white border border-white rounded-full py-2 px-6 hover:bg-gray-700">
-                            Login
-                        </button>
-                    }
-                    {
-                        token && 
-                        <div className=''>
-                            {
-                                result.length > 0 &&
-                                <button className='mr-4 text-white' onClick={() => {
-                                    setResult([])
-                                    setQuery('')
-                                }}>
-                                    Clear Result
-                                </button>
-                            }
-                            <input name="query" className='rounded-l-full py-2 px-4' value={query} onChange={(e) => setQuery(e.target.value)} />
-                            <button className='bg-green-500 py-2 px-4 rounded-r-full' onClick={handleSearch}>Search</button>
-                        </div>
-                    }
-                </div>
-            </Container>
+
+            <div className="flex items-center justify-between px-2">
+                {
+                    !token &&
+                    <button
+                        onClick={handleAuthorizeUser}
+                        className="text-white border border-white rounded-full py-2 px-6 hover:bg-gray-700">
+                        Login
+                    </button>
+                }
+                {
+                    token && 
+                    <div className=''>
+                        {
+                            result.length > 0 &&
+                            <button className='mr-4 text-white' onClick={() => {
+                                setResult([])
+                                setQuery('')
+                            }}>
+                                Clear Result
+                            </button>
+                        }
+                        <input name="query" value={query} onChange={(e) => setQuery(e.target.value)} />
+                        <button className='bg-green-500 py-2 px-4 rounded-r-full' onClick={handleSearch}>Search</button>
+                    </div>
+                }
+            </div>
+            <div>
+            { result.length > 0 && result.map((music, index)=>
+                    <MusicComponent
+                        key={music.id}
+                        title={music.name}
+                        image={music.album.images[0].url}
+                        artis={music.album.artists[0].name}
+                        date={music.album.release_date}
+                        populer = {music.popularity}
+                    />
+                )}
+            </div>
         </section>
     )
 }

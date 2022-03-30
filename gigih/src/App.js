@@ -4,7 +4,7 @@ import PageMusic from './temp';
 function App() {
   return (
     <div className="App">
-      < PageMusic/>
+      <PageMusic/>
     </div>
   );
 }

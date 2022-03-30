@@ -1,14 +1,17 @@
 import MusicComponent from "../component";
+import Nav from "./nav";
 import "./style.css";
+
+
 const PageMusic = () => {
-  const song = [
+    const song = [
     {
-      album: {
+        album: {
         album_type: "album",
         artists: [
-          {
+            {
             external_urls: {
-              spotify: "https://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d"
+                spotify: "https://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d"
             },
             href: "https://api.spotify.com/v1/artists/1dfeR4HaWDbWqFHLkxsg1d",
             id: "1dfeR4HaWDbWqFHLkxsg1d",
@@ -23,24 +26,24 @@ const PageMusic = () => {
         href: "https://api.spotify.com/v1/albums/1GbtB4zTqAsyfZEsm1RZfx",
         id: "1GbtB4zTqAsyfZEsm1RZfx",
         images: [
-          {
+        {
             height: 640,
             url:
-              "https://i.scdn.co/image/ab67616d0000b273e319baafd16e84f0408af2a0",
+            "https://i.scdn.co/image/ab67616d0000b273e319baafd16e84f0408af2a0",
             width: 640
-          },
-          {
+        },
+        {
             height: 300,
             url:
-              "https://i.scdn.co/image/ab67616d00001e02e319baafd16e84f0408af2a0",
+            "https://i.scdn.co/image/ab67616d00001e02e319baafd16e84f0408af2a0",
             width: 300
-          },
-          {
+        },
+        {
             height: 64,
             url:
-              "https://i.scdn.co/image/ab67616d00004851e319baafd16e84f0408af2a0",
+            "https://i.scdn.co/image/ab67616d00004851e319baafd16e84f0408af2a0",
             width: 64
-          }
+        }
         ],
         name: "A Night At The Opera (2011 Remaster)",
         release_date: "1975-11-21",
@@ -48,78 +51,78 @@ const PageMusic = () => {
         total_tracks: 12,
         type: "album",
         uri: "spotify:album:1GbtB4zTqAsyfZEsm1RZfx"
-      },
-      artists: [
+    },
+    artists: [
         {
-          external_urls: {
+        external_urls: {
             spotify: "https://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d"
-          },
-          href: "https://api.spotify.com/v1/artists/1dfeR4HaWDbWqFHLkxsg1d",
-          id: "1dfeR4HaWDbWqFHLkxsg1d",
-          name: "Queen",
-          type: "artist",
-          uri: "spotify:artist:1dfeR4HaWDbWqFHLkxsg1d"
+        },
+        href: "https://api.spotify.com/v1/artists/1dfeR4HaWDbWqFHLkxsg1d",
+        id: "1dfeR4HaWDbWqFHLkxsg1d",
+        name: "Queen",
+        type: "artist",
+        uri: "spotify:artist:1dfeR4HaWDbWqFHLkxsg1d"
         }
-      ],
-      disc_number: 1,
-      duration_ms: 354320,
-      explicit: false,
-      external_ids: {
+    ],
+    disc_number: 1,
+    duration_ms: 354320,
+    explicit: false,
+    external_ids: {
         isrc: "GBUM71029604"
-      },
-      external_urls: {
+    },
+    external_urls: {
         spotify: "https://open.spotify.com/track/4u7EnebtmKWzUH433cf5Qv"
-      },
-      href: "https://api.spotify.com/v1/tracks/4u7EnebtmKWzUH433cf5Qv",
-      id: "4u7EnebtmKWzUH433cf5Qv",
-      is_local: false,
-      is_playable: true,
-      name: "Bohemian Rhapsody - Remastered 2011",
-      popularity: 82,
-      preview_url: null,
-      track_number: 11,
-      type: "track",
-      uri: "spotify:track:4u7EnebtmKWzUH433cf5Qv"
+        },
+        href: "https://api.spotify.com/v1/tracks/4u7EnebtmKWzUH433cf5Qv",
+        id: "4u7EnebtmKWzUH433cf5Qv",
+        is_local: false,
+        is_playable: true,
+        name: "Bohemian Rhapsody - Remastered 2011",
+        popularity: 82,
+        preview_url: null,
+        track_number: 11,
+        type: "track",
+        uri: "spotify:track:4u7EnebtmKWzUH433cf5Qv"
     },
     {
-      album: {
+    album: {
         album_type: "album",
         artists: [
-          {
+        {
             external_urls: {
-              spotify: "https://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d"
+            spotify: "https://open.spotify.com/artist/1dfeR4HaWDbWqFHLkxsg1d"
             },
             href: "https://api.spotify.com/v1/artists/1dfeR4HaWDbWqFHLkxsg1d",
             id: "1dfeR4HaWDbWqFHLkxsg1d",
             name: "Queen",
             type: "artist",
             uri: "spotify:artist:1dfeR4HaWDbWqFHLkxsg1d"
-          }
+        }
         ],
         external_urls: {
-          spotify: "https://open.spotify.com/album/6i6folBtxKV28WX3msQ4FE"
+        spotify: "https://open.spotify.com/album/6i6folBtxKV28WX3msQ4FE"
         },
         href: "https://api.spotify.com/v1/albums/6i6folBtxKV28WX3msQ4FE",
         id: "6i6folBtxKV28WX3msQ4FE",
         images: [
-          {
+        {
             height: 640,
             url:
-              "https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b",
+                "https://i.scdn.co/image/ab67616d0000b273e8b066f70c206551210d902b",
             width: 640
-          },
-          {
+        },
+            {
             height: 300,
             url:
-              "https://i.scdn.co/image/ab67616d00001e02e8b066f70c206551210d902b",
+                "https://i.scdn.co/image/ab67616d00001e02e8b066f70c206551210d902b",
             width: 300
-          },
-          {
+            },
+            {
             height: 64,
             url:
-              "https://i.scdn.co/image/ab67616d00004851e8b066f70c206551210d902b",
+                "https://i.scdn.co/image/ab67616d00004851e8b066f70c206551210d902b",
             width: 64
-          }
+        }
         ],
         name: "Bohemian Rhapsody (The Original Soundtrack)",
         release_date: "2018-10-19",
@@ -796,26 +799,30 @@ const PageMusic = () => {
       type: "track",
       uri: "spotify:track:7iAqvWLgZzXvH38lA06QZg"
     }
-  ];
-  
-    return (
-      <div className="container">
-        <div className="musics">
-          {song.map((music, index)=>
-            <MusicComponent
-              key={music.id}
-              title={music.name}
-              image={music.album.images[0].url}
-              artis={music.album.artists[0].name}
-              date={music.album.release_date}
-              populer = {music.popularity}
-            />
-          
-          )}
+];
 
-        </div>
-      </div>
+
+    return (
+        <>
+            <Nav/>
+            <div className="container">
+                <div className="musics">
+                {song.map((music, index)=>
+                    <MusicComponent
+                        key={music.id}
+                        title={music.name}
+                        image={music.album.images[0].url}
+                        artis={music.album.artists[0].name}
+                        date={music.album.release_date}
+                        populer = {music.popularity}
+                    />
+                )}
+                </div>
+            </div>
+        
+        </>
+
     );
-  };
-  
+};
+
 export default PageMusic;

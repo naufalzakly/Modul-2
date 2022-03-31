@@ -1,7 +1,8 @@
 // import { useSearchResult } from "../component/search";
 import axios from "axios";
-import { useEffect, useState } from 'react'
-import MusicComponent from "../component";
+import { useEffect, useState,useCallback } from 'react'
+import MusicComponent from "../component/music";
+
 
 
 const Nav = () => {
@@ -27,8 +28,8 @@ const Nav = () => {
         setToken(token)
     }
 
-    const handleSearch = async () => {
-        const response = await axios.get(`${BASE_URL}search`,{
+    const handleSearch = useCallback ( async  () => {
+        axios.get(`${BASE_URL}search`,{
             params: {
                 q: query,
                 type: 'track'
@@ -40,11 +41,13 @@ const Nav = () => {
         .then((response) => {
             setResult(response.data.tracks.items)
         })
-    }
+    }, [query,token])
 
     useEffect(() => {
+        
+        handleSearch();
         if (window.location.hash) parseToken(window.location.hash)
-    },[])
+    },[handleSearch])
 
     
     return(

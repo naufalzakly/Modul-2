@@ -1,6 +1,7 @@
-import MusicComponent from "../component";
+import MusicComponent from "../component/music";
 import Nav from "./nav";
 import "./style.css";
+
 
 
 const PageMusic = () => {
@@ -815,8 +816,10 @@ const PageMusic = () => {
                         artis={music.album.artists[0].name}
                         date={music.album.release_date}
                         populer = {music.popularity}
+                        
                     />
                 )}
+                
                 </div>
             </div>
         

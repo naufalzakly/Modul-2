@@ -7,51 +7,56 @@
 }
 
 .musics {
-    width: 70%;
+
     padding: 20px;
 
 }
+
 .music__wrapper {
-    padding: 5px;
+
     color: white;
     border: 1px solid rgb(112, 0, 88);
     background-color: rgb(112, 0, 88);
-    
-
     border-radius: 5px;
     text-align: left;
     display: flex;
 }
 
 .music__content {
-    flex: 1 1 50%;
+    flex: 1 1 30%;
     display: flex;
     flex-direction: column;
-    
+    margin-right: 190px;
+
 
 }
 
 .music__date {
 
-    color:white;
+    color: white;
     font-style: italic;
 
 }
 
-.music__heading{
+.music__heading {
     font-size: 20px;
     font-style: normal;
 }
 
 
-.music_detail{
+.music_detail {
     display: flex;
     font-size: 12px;
+
 }
-.music__info{
+
+.music__info {
     display: flex;
+    margin-bottom: 70px;
+
 }
-.music__titik{
+
+.music__titik {
     color: white;
     font-size: 30px;
 }
@@ -69,11 +74,12 @@
 }
 
 .music__wrapper:not(:last-child) {
-    border-bottom: 1px solid rgb(112, 0, 88);;
-    padding-bottom: 30px;
+    border-bottom: 1px solid rgb(112, 0, 88);
+    padding: 20px 5px;
     margin-bottom: 20px;
 }
-.music__title{
-    
-    font-size: 40px;
+
+.music__title {
+    margin: inherit;
+    font-size: 30px;
 }

@@ -4,12 +4,15 @@ const SearchContext = createContext({})
 
 export const SearchProvider = ({children}) => {
     const [result,setResult] = useState([])
+    const [selectedSongs,setSelectedSongs] = useState([])
 
     return (
         <SearchContext.Provider
             value={{
                 result,
                 setResult,
+                selectedSongs,
+                setSelectedSongs
             }}
         >
             {children}

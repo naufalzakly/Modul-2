@@ -1,36 +1,50 @@
-import { useState,useEffect } from "react";
+import { useSearchResult } from "../component/search"
 
+const MusicComponent = ({number,title,artist,album, uri, song}) => {
+    const {selectedSongs, setSelectedSongs} = useSearchResult()
+    const generateButtonText = () => {
+        const selected = selectedSongs.findIndex((song) => song.uri === uri)
+        if (selected !== -1) return 'Deselect'
+        return 'Select'
+    }
 
-const MusicComponent = ({ title, date, artis, image, populer }) => {
+    const handleSelect = () => {
+        const selected = selectedSongs.findIndex((song) => song.uri === uri)
+        if (selected > -1) {
+            const newSelectedSongs = selectedSongs.filter((song) => song.uri !== uri)
+            setSelectedSongs(newSelectedSongs)
+        } else {
+            const newSelectedSongs = [...selectedSongs,song]
+            setSelectedSongs(newSelectedSongs)
+        }
+    }
 
+    console.log(selectedSongs)
 
-  const [deselected, setDeselected] = useState(false);
 
     return (
-      <div className="music__wrapper">
-        <div className="music__image">
-          <img src={image} width={300} height={300} alt="pic" />
-        </div>
-        <div className="music__content">
-          <div className="music__heading">
-            <h2 className="music__title">{title}</h2>
-          </div>
-          <div className="music__info">
-            <div className="music__detail"> 
-              {artis} 
-              <span className="music__titik"> . </span>
-              <span className="music__date"> {date}</span>
-              <span className="music__titik"> . </span>
-              <span className="music__date"> {populer} Like</span>
-              
+        <div>
+            <div className="grid grid-cols-[50px_1fr_80px] gap-4 text-white mb-3">
+                <div className="flex items-center justify-center">
+                    {number+1}
+                </div>
+                <div className="text-left">
+                    <h3 className="font-semibold">{title}</h3>
+                    <div>
+                        <span className="text-gray-300">{album}</span>
+                    </div>
+                </div>
+                <div className="flex items-center justify-center">
+                    <button
+                        className="transition-all py-2 px-5 text-sm border border-gray-600 hover:border-gray-400 rounded-full"
+                        onClick={handleSelect}
+                    >
+                        {generateButtonText()}
+                    </button>
+                </div>
             </div>
-          </div>
-          <div>
-            <button onClick={()=> setDeselected(!deselected)}>{deselected ? 'Deselected' : 'Selected'}</button>
-          </div>
         </div>
-      </div>
-    );
-  };
-  
-  export default MusicComponent;
+    )
+}
+
+export default MusicComponent;

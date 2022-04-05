@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from 'react'
 import Container from "./container";
-
+import { useSelector, useDispatch } from 'react-redux';
+import { setToken } from '../../reducer/AuthReducer';
     
 const BASE_URL = 'https://api.spotify.com/v1/'
 const CLIENT_ID = '3bb5b74152ac472b94729257efbdae86'
@@ -11,10 +12,14 @@ const SCOPE = 'playlist-modify-private'
 const Nav = () => {
 
 
-    const [token,setToken] = useState(null);
     const [query,setQuery] = useState('');
     const [result,setResult] = useState([])
 
+    const { axios } = useStoreApi()
+
+
+    const token = useSelector(state => state.auth.token)
+    const dispatch = useDispatch()
 
     const handleAuthorizeUser = () => {
         window.location.replace(`${AUTHORIZE_URL}?client_id=${CLIENT_ID}&response_type=token&redirect_uri=${REDIRECT_URI}&scope=${SCOPE}`)
@@ -23,7 +28,7 @@ const Nav = () => {
     const parseToken = (url) => {
         const parsed = url.split('&')[0].split('=')
         const token = parsed[parsed.length-1] ?? null
-        setToken(token)
+        dispatch(setToken(token))
     }
 
     const handleSearch = async  () => {

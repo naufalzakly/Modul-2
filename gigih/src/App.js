@@ -1,35 +1,46 @@
-import data from './data/album';
-import Nav from './component/nav';
-import Header from './component/header';
-import PageMusic from './pages';
+
 import './App.css';
-import { SearchProvider, useSearchResult } from './component/search';
+import { SearchProvider } from './component/search';
+import { ApiProvider } from './data/storeApi';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import Home from './page/Home';
+import CreatePlaylist from './page/CreatePlaylist';
+import { useSelector } from 'react-redux';
+
 
 function App() {
-  const { result } = useSearchResult()
+  const token = useSelector(state => state.auth.token)
   return (
-    <div className="App flex flex-col min-h-screen">
-        <Nav />
-        {
-          result.length === 0 &&
-          <Header
-            imageUrl={data.album.images[0].url}
-            albumName={data.album.name}
-          />
-        }
-        <PageMusic />
-        <div className='text-xs bg-gray-800 py-3 text-white'>
-          Generasi Gigih Frontend Track Homework by Naufal Zakly Santoso
-        </div>
-    </div>
-  );
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/create-playlist" exact>
+          {
+            token === null
+            ? <Redirect to="/" />
+            : <CreatePlaylist />
+          }
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
 
 const AppContainer = () => {
   return (
-    <SearchProvider>
-      <App />
-    </SearchProvider>
+    <ApiProvider>
+      <SearchProvider>
+        <App />
+      </SearchProvider>
+    </ApiProvider>
   )
 }
 

@@ -4,6 +4,7 @@ import Track from "../component/music"
 import songs from '../data/track';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useSearchResult } from './search';
 
 
 const Tracks = () => {

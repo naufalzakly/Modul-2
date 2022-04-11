@@ -2,7 +2,7 @@ import { useState } from "react";
 import Container from "../component/container";
 import Navbar from "../component/nav";
 import { useStoreApi } from "../data/storeApi";
-import { useSearchResult } from "../component/searcht";
+import { useSearchResult } from "../component/search";
 import Track from "../data/track";
 
 const CreatePlaylist = () => {

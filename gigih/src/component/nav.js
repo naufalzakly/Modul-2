@@ -2,9 +2,9 @@
 import { useEffect, useState } from 'react'
 import Container from "./container";
 import { Link } from 'react-router-dom';
-
+import { useSearchResult } from './search';
 import { useSelector, useDispatch } from 'react-redux';
-import { setToken } from '../pages/autoreduce';
+import { setToken } from '../component/autoreduce';
 import { useStoreApi } from "../data/storeApi";
     
 const BASE_URL = 'https://api.spotify.com/v1/'

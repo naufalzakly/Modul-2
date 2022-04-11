@@ -9,8 +9,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Home from './page/Home';
-import CreatePlaylist from './page/CreatePlaylist';
+import Home from './pages/home';
+import CreatePlaylist from './pages/createplaylist';
 import { useSelector } from 'react-redux';
 
 

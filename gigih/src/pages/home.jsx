@@ -1,9 +1,9 @@
 import data from '../data/album';
 import Navbar from '../component/nav'
-import Header from '../../components/Header'
+import Header from '../component/header'
 import Tracks from '../component/tracks'
 import UserPlaylist from '../component/playlist/index';
-import { useSearchResult } from "../component/searcht";
+import { useSearchResult } from "../component/search";
 
 
 const Home = () => {

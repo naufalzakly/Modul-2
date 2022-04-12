@@ -47,11 +47,12 @@ const Nav = () => {
 
     useEffect(() => {
         if (window.location.hash) parseToken(window.location.hash)
-    },[])
+    })
 
     return (
-        <section className="bg-gray-800 py-4">
+        <section className="bg-gray-900 py-4">
             <Container>
+                {/* flexbox */}
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between px-2">
                     <Link to="/" className="text-white font-bold text-lg lg:text-xl">
                         Spotify Clone
@@ -66,6 +67,7 @@ const Nav = () => {
                     }
                     {
                         token && 
+                        
                         <div className='flex flex-col md:flex-row items-start md:items-center my-2 space-y-2'>
                             {
                                 result.length > 0 &&
@@ -76,6 +78,7 @@ const Nav = () => {
                                     Clear Result
                                 </button>
                             }
+
                             <div className='flex'>
                                 <input name="query" className='rounded-l-full py-2 px-4' value={query} onChange={(e) => setQuery(e.target.value)} />
                                 <button className='bg-green-500 py-2 px-4 rounded-r-full' onClick={handleSearch}>Search</button>

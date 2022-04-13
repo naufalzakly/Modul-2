@@ -6,6 +6,7 @@ import { useSearchResult } from './search';
 import { useSelector, useDispatch } from 'react-redux';
 import { setToken } from '../component/autoreduce';
 import { useStoreApi } from "../data/storeApi";
+import Button from '@mui/material/Button';
     
 const BASE_URL = 'https://api.spotify.com/v1/'
 const CLIENT_ID = '3bb5b74152ac472b94729257efbdae86'
@@ -59,11 +60,12 @@ const Nav = () => {
                     </Link>
                     {
                         !token &&
-                        <button
+                        <Button
+                            variant="outlined"
                             onClick={handleAuthorizeUser}
                             className="text-white border border-white rounded-full py-2 px-6 hover:bg-gray-700">
                             Login
-                        </button>
+                        </Button>
                     }
                     {
                         token && 
@@ -71,17 +73,16 @@ const Nav = () => {
                         <div className='flex flex-col md:flex-row items-start md:items-center my-2 space-y-2'>
                             {
                                 result.length > 0 &&
-                                <button className='mr-4 text-white' onClick={() => {
+                                <Button variant="outlined"className='mr-4 text-white' onClick={() => {
                                     setResult([])
                                     setQuery('')
                                 }}>
                                     Clear Result
-                                </button>
+                                </Button>
                             }
-
                             <div className='flex'>
                                 <input name="query" className='rounded-l-full py-2 px-4' value={query} onChange={(e) => setQuery(e.target.value)} />
-                                <button className='bg-green-500 py-2 px-4 rounded-r-full' onClick={handleSearch}>Search</button>
+                                <Button variant="contained" className='bg-green-500 py-2 px-4 rounded-r-full' onClick={handleSearch}>Search</Button>
                             </div>
                         </div>
                     }

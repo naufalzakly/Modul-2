@@ -5,6 +5,7 @@ const Header = (props) => {
     return (
         <section className="py-12 bg-gradient-to-b from-blue-700 to-blue-900">
             <Container>
+                {/* flexbox */}
                 <section className="flex flex-col lg:flex-row items-start lg:items-end lg:space-x-4 text-white">
                     <div>
                         <img alt="Album cover" src={data.album.images[0].url} className="h-[200px] w-[200px] shadow-xl" />

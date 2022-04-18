@@ -1,40 +1,72 @@
 .App {
-  text-align: center;
-  font-family: 'Inter', sans-serif;
+	text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+::-webkit-scrollbar-track {
+	background-color: transparent;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: rgba(255, 255, 255, 0.163);
+	border-radius: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+	font-family: "Roboto";
+	background-color: #bbd1ea;
+	background-size: 40% auto;
+	background-repeat: repeat;
+	color: #323031;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+li {
+	list-style: none;
 }
 
-.App-link {
-  color: #61dafb;
+a {
+	text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+html {
+	scroll-behavior: smooth;
+}
 
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+	max-width: 1170px;
+	width: 100%;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+header h1 {
+	font-size: 60px;
+	text-align: center;
+	letter-spacing: 10px;
+	color: #bbd1ea;
+}
+
+header {
+	background-color: #323031;
+	height: 80px;
+	margin-bottom: 10px;
+}
+
+@media all and (max-width: 670px) {
+	header h1 {
+		font-size: 40px;
+	}
+
+	header {
+		margin-bottom: 10px;
+		height: 50px;
+	}
 }

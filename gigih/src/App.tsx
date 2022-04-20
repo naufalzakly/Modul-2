@@ -8,7 +8,7 @@ function App() {
 	return (
 		<div className="App">
 			<header>
-				<h1>Naufal Zakly S.</h1>
+				<h1>Reinardtify</h1>
 			</header>
 			<Provider store={store}>
 				<Router>

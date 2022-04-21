@@ -17,8 +17,7 @@ function Home() {
 				</div>
 				<div className="home-row home-left">
 					<h2>
-						SpotifyClone is a Web App to create your desired playlist in spotify
-						!
+						SpotifyClone is a Web App to create your desired playlist in spotify!
 					</h2>
 				</div>
 				<div className="home-row home-right">

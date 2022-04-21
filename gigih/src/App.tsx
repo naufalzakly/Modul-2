@@ -8,7 +8,7 @@ function App() {
 	return (
 		<div className="App">
 			<header>
-				<h1>Reinardtify</h1>
+				<h1>SpotifyClone</h1>
 			</header>
 			<Provider store={store}>
 				<Router>

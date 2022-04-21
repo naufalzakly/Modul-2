@@ -5,7 +5,6 @@ import {
 	logOutUserProfile,
 } from "../../core/redux/userProfile-slice";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
@@ -13,7 +12,7 @@ import axios from "axios";
 
 const SignIn: FC = () => {
 	const CLIENT_ID = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-	const REDIRECT_URI = "http://localhost:3000/home";
+	const REDIRECT_URI = process.env.REACT_APP_SPOTIFY_CALLBACK;
 	const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 	const RESPONSE_TYPE = "token";
 	const SCOPE = "playlist-modify-private";
@@ -24,10 +23,10 @@ const SignIn: FC = () => {
 	useEffect(() => {
 		var now = new Date().getTime();
 		const hash = window.location.hash;
-		let token = window.localStorage.getItem("token");
+		let tokenLocal = window.localStorage.getItem("token");
 
 		if (!token && hash) {
-			token = (
+			tokenLocal = (
 				hash
 					.substring(1)
 					.split("&")
@@ -36,9 +35,9 @@ const SignIn: FC = () => {
 			window.localStorage.setItem("setupTime", now.toString());
 		}
 		window.location.hash = "";
-		setToken(token);
-		dispatch(login(token));
-		window.localStorage.setItem("token", String(token));
+		setToken(tokenLocal);
+		dispatch(login(tokenLocal));
+		window.localStorage.setItem("token", String(tokenLocal));
 
 		if (token) {
 			axios
@@ -55,14 +54,15 @@ const SignIn: FC = () => {
 		var setupTime = parseInt(String(localStorage.getItem("setupTime")));
 		if (now - setupTime > 3600 * 1000) {
 			window.localStorage.clear();
-			dispatch(login(""));
+			dispatch(login(null));
+			setToken(null);
 		}
-	}, [dispatch]);
+	}, [token, dispatch]);
 
 	const logout = () => {
 		setToken(null);
 		window.localStorage.setItem("token", "");
-		dispatch(login(""));
+		dispatch(login(null));
 		dispatch(logOutUserProfile());
 	};
 	return (
@@ -84,30 +84,28 @@ const SignIn: FC = () => {
 					Login to Spotify
 				</Button>
 			) : (
-				<Link to="/">
-					<Button
-						variant="contained"
-						sx={{
-							borderRadius: 1,
+				<Button
+					variant="contained"
+					sx={{
+						borderRadius: 1,
+						backgroundColor: "#323031",
+						color: "#bbd1ea",
+						padding: "7px 20px",
+						margin: "10px auto",
+						fontSize: "22px",
+						fontWeight: 900,
+						"&:hover": {
 							backgroundColor: "#323031",
-							color: "#bbd1ea",
-							padding: "7px 20px",
-							margin: "10px auto",
-							fontSize: "22px",
-							fontWeight: 900,
-							"&:hover": {
-								backgroundColor: "#323031",
-							},
-							"@media(max-width: 670px)": {
-								fontSize: "15px",
-							},
-						}}
-						onClick={logout}
-						endIcon={<LogoutIcon />}
-					>
-						Logout
-					</Button>
-				</Link>
+						},
+						"@media(max-width: 670px)": {
+							fontSize: "15px",
+						},
+					}}
+					onClick={logout}
+					endIcon={<LogoutIcon />}
+				>
+					Logout
+				</Button>
 			)}
 		</>
 	);

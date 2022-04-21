@@ -9,6 +9,7 @@ import "./create-playlist.css";
 import { Avatar } from "@mui/material";
 import { Item } from "../../core/tsx-module/tracks";
 import { tokenState, userProfileState } from "../../core/tsx-module/reduxState";
+import DialogPlaylist from "../../components/dialogPlaylist";
 
 const CreatePlaylist: FC = () => {
 	const token = useSelector((state: tokenState) => state.token.value);
@@ -19,7 +20,6 @@ const CreatePlaylist: FC = () => {
 		(state: userProfileState) => state.userProfile.image
 	);
 	const userId = useSelector((state: userProfileState) => state.userProfile.id);
-
 	const [searchKey, setSearchKey] = useState("");
 	const [tracks, setTrack] = useState([]);
 	const [playlist, setPlaylist] = useState({
@@ -29,6 +29,7 @@ const CreatePlaylist: FC = () => {
 
 	const [selectedTracks, setSelectedTracks] = useState<Item[]>([]);
 	const [combinedTracks, setCombinedTracks] = useState<Item[]>([]);
+	const [openDialog, setOpenDialog] = useState(false);
 
 	const HeaderToken = () => {
 		return {
@@ -44,12 +45,12 @@ const CreatePlaylist: FC = () => {
 		);
 		alreadySelected
 			? setSelectedTracks(
-					selectedTracks.filter((t: Item) => t.uri !== track.uri)
-			  )
+				selectedTracks.filter((t: Item) => t.uri !== track.uri)
+			)
 			: setSelectedTracks((selectedTracks: Item[]) => [
-					...selectedTracks,
-					track,
-			  ]);
+				...selectedTracks,
+				track,
+			]);
 	};
 
 	useEffect(() => {
@@ -105,7 +106,8 @@ const CreatePlaylist: FC = () => {
 					{ uris: uris },
 					HeaderToken()
 				);
-				alert("Playlist Added");
+				// alert("Playlist added");
+				setOpenDialog(true);
 			})
 			.catch(() => {
 				alert("Playlist add failed");
@@ -136,6 +138,10 @@ const CreatePlaylist: FC = () => {
 		setPlaylist({ ...playlist, [name]: value });
 	};
 
+	const handleCloseDialog = () => {
+		setOpenDialog(false);
+	};
+
 	return (
 		<>
 			<div className="account">
@@ -162,6 +168,11 @@ const CreatePlaylist: FC = () => {
 						playlist={playlist}
 						handleChange={handlePlaylistChange}
 						handleSubmit={playlistAdd}
+					/>
+					<DialogPlaylist
+						open={openDialog}
+						handleClose={handleCloseDialog}
+						playlist={playlist}
 					/>
 					{selectedTracks.length > 0 && (
 						<h1 className="title">Selected tracks</h1>

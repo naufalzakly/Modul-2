@@ -7,6 +7,11 @@ import store from "../core/redux/store";
 import SearchBar from "../components/searchbar";
 import userEvent from "@testing-library/user-event";
 import { emptyTracks } from "./jsonData/emptyTracks";
+import { server } from "../core/msw/server";
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
 test("renders components in Create Playlist", () => {
 	render(

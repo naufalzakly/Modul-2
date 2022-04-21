@@ -13,11 +13,12 @@ function Home() {
 					<h2>Hello Welcome to SpotifyClone !</h2>
 				</div>
 				<div className="home-row home-right">
-					<h2>What is Naufal ?</h2>
+					<h2>What is SpotifyClone ?</h2>
 				</div>
 				<div className="home-row home-left">
 					<h2>
-						SpotifyClone is a Web App to create your desired playlist in spotify!
+						Reinardtify is a Web App to create your desired playlist in spotify
+						!
 					</h2>
 				</div>
 				<div className="home-row home-right">

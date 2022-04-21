@@ -1,5 +1,5 @@
 import { rest } from "msw";
-import { testItems } from "../../test/jsonData/tracks";
+import { testItems } from "../../__test__/jsonData/tracks";
 
 const searchParams = "TEST DRIVE";
 export const handler = [

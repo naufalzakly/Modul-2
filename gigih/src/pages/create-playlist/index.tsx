@@ -45,12 +45,12 @@ const CreatePlaylist: FC = () => {
 		);
 		alreadySelected
 			? setSelectedTracks(
-				selectedTracks.filter((t: Item) => t.uri !== track.uri)
-			)
+					selectedTracks.filter((t: Item) => t.uri !== track.uri)
+			  )
 			: setSelectedTracks((selectedTracks: Item[]) => [
-				...selectedTracks,
-				track,
-			]);
+					...selectedTracks,
+					track,
+			  ]);
 	};
 
 	useEffect(() => {
